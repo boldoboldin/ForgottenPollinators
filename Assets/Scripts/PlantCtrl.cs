@@ -35,4 +35,22 @@ public class PlantCtrl : MonoBehaviour
     {
 
     }
+
+    private void OnMouseEnter()
+    {
+        if (pollenCapacity != 0 && CursorManager.somethingSelected)
+        {
+            CursorManager.instance.ChangeCursor("CollectPollen");
+        }
+
+        if (nectarCapacity != 0 && CursorManager.somethingSelected)
+        {
+            CursorManager.instance.ChangeCursor("CollectNectar");
+        }
+
+    }
+    private void OnMouseExit()
+    {
+        CursorManager.instance.ChangeCursor("Default");
+    }
 }

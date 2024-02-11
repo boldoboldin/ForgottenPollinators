@@ -18,10 +18,10 @@ public class WorkerBeeCtrl : Bee
     public static List<Bee> moveableUnits = new List<Bee>();
     public NavMeshAgent agent;
     public Vector3 destination;
-    private bool isSelected;
+    public bool isSelected;
 
-    [SerializeField] private CircleCollider2D visionCol;
-    [SerializeField] private Transform[] flowersPos;
+    [SerializeField] private CircleCollider2D viewCol;
+    private List<GameObject> flowersSeen;
 
     private float delay = 0f;
 
@@ -31,7 +31,6 @@ public class WorkerBeeCtrl : Bee
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        //currentState = new Idle(gameObject, agent, visionCol, flowersPos);
 
         moveableUnits.Add(this);
         destination = transform.position;
@@ -39,20 +38,38 @@ public class WorkerBeeCtrl : Bee
 
     void Update()
     {
-        //currentState = currentState.Process();
-        
-        if (Input.GetMouseButtonDown(0) && !isSelected )
-        {
-            //info
-        }
-        else if (Input.GetMouseButtonDown(0) && isSelected)
-        {
-            Debug.Log("Unit" + this.name + " selected");
-            SetAction();
 
+        if (CursorManager.cursorMode == "Default")
+        {
+            if (Input.GetMouseButtonDown(0) && !isSelected)
+            {
+                //info
+            }
+            else if (Input.GetMouseButtonDown(0) && isSelected)
+            {
+                Debug.Log("Unit" + this.name + " selected");
+                SetAction();
+
+            }
         }
 
-        if (Input.GetMouseButtonDown(1))
+        if (CursorManager.cursorMode == "CollectPollen")
+        {
+            if (Input.GetMouseButtonDown(0) && isSelected)
+            {
+                SetAction();
+            }
+        }
+
+        if (CursorManager.cursorMode == "CollectNectar")
+        {
+            if (Input.GetMouseButtonDown(0) && isSelected)
+            {
+                SetAction();
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1) || (Input.GetKeyDown(KeyCode.Escape)))
         {
             Debug.Log("Deselected units");
             DeselectUnits();
@@ -62,17 +79,21 @@ public class WorkerBeeCtrl : Bee
         {
             currentAction = "Browsing";
             Debug.Log("The bee " + this.name + " is browsing for flowers");
-            
+        }
+
+        if (Input.GetKeyDown(KeyCode.P) && isSelected)
+        {
+            CursorManager.instance.ChangeCursor("CollectPollen");
+        }
+
+        if (Input.GetKeyDown(KeyCode.N) && isSelected)
+        {
+            CursorManager.instance.ChangeCursor("CollectNectar");
         }
 
         if (currentAction == "Browsing")
         {
             Browsing();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape) && isSelected)
-        {
-            //currentState = new Idle(gameObject, agent, visionCol, flowersPos);
         }
     }
 
@@ -90,7 +111,19 @@ public class WorkerBeeCtrl : Bee
         {
             if (hit.collider.CompareTag("Flower"))
             {
-                Move(hit.point);
+                if (CursorManager.cursorMode == "CollectPollen")
+                {
+                    currentAction = "CollectPollen";
+                    Debug.Log("The bee " + this.name + " is collecting pollen");
+                }
+
+                if (CursorManager.cursorMode == "CollectNectar")
+                {
+                    currentAction = "CollectNectar";
+                    Debug.Log("The bee " + this.name + " is collecting Nectar");
+                }
+
+
             }
             else if (hit.collider.CompareTag("Nest"))
             {
@@ -102,7 +135,6 @@ public class WorkerBeeCtrl : Bee
             }
 
             Debug.Log("Clicked on: " + hit.collider.name + " " + hit.point);
-
         }
     }
 
@@ -110,15 +142,16 @@ public class WorkerBeeCtrl : Bee
     {
         foreach (WorkerBeeCtrl obj in moveableUnits)
         {
-
+            CursorManager.somethingSelected = false;
             obj.isSelected = false;
+            CursorManager.instance.ChangeCursor("Default");
             //obj.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-
         }
     }
 
     private void OnMouseDown()
     {
+        CursorManager.somethingSelected = true;
         isSelected = true;
         //gameObject.GetComponent<SpriteRender>().color = Color.green;
 
@@ -139,7 +172,6 @@ public class WorkerBeeCtrl : Bee
         agent.SetDestination(destination);
         currentAction = "Idle";
         agent.speed = 2f;
-
     }
 
     private void Browsing()
@@ -153,8 +185,7 @@ public class WorkerBeeCtrl : Bee
         if (!agent.pathPending && agent.remainingDistance < 0.5f && delay <= 0)
         {
             SetRandomDestination();
-            delay = Random.Range(100f, 500f);
-
+            delay = Random.Range(100f, 600f);
         }
 
         //if (CanSeeFlowers())
@@ -194,13 +225,17 @@ public class WorkerBeeCtrl : Bee
 
     private void Collect(string resource, GameObject plantTarget)
     {
-
+        if (cropLoad < cropCapacity)
+        {
+            int rndTargetFlower = Mathf.RoundToInt(Random.Range(0f, flowersSeen.Count));
+            agent.SetDestination(flowersSeen[rndTargetFlower].transform.position);
+        }
     }
 
     private void ReturnToHive()
     {
         Vector3 nestPos = new Vector3(nest.transform.position.x, nest.transform.position.y, nest.transform.position.z);
-        
+
         Move(nestPos);
 
         Debug.Log("The bee " + this.name + " is returning to its home");
@@ -221,5 +256,12 @@ public class WorkerBeeCtrl : Bee
 
     }
 
-
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Flower"))
+        {
+            Debug.Log("The bee " + this.name + " found flowers");
+            flowersSeen.Add(other.gameObject);
+        }
+    }
 }

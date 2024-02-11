@@ -353,11 +353,8 @@ MonoBehaviour:
   nest: {fileID: 136948356}
   agent: {fileID: 96067992}
   destination: {x: 0, y: 0, z: 0}
-  visionCol: {fileID: 841090128}
-  flowersPos:
-  - {fileID: 1561644190}
-  - {fileID: 1356820618}
-  - {fileID: 136948359}
+  isSelected: 0
+  viewCol: {fileID: 0}
 --- !u!50 &96067994
 Rigidbody2D:
   serializedVersion: 4
@@ -687,11 +684,8 @@ MonoBehaviour:
   nest: {fileID: 136948356}
   agent: {fileID: 417720631}
   destination: {x: 0, y: 0, z: 0}
-  visionCol: {fileID: 1686814930}
-  flowersPos:
-  - {fileID: 1561644190}
-  - {fileID: 1356820618}
-  - {fileID: 136948359}
+  isSelected: 0
+  viewCol: {fileID: 0}
 --- !u!50 &417720633
 Rigidbody2D:
   serializedVersion: 4
@@ -1156,11 +1150,8 @@ MonoBehaviour:
   nest: {fileID: 136948356}
   agent: {fileID: 752323187}
   destination: {x: 0, y: 0, z: 0}
-  visionCol: {fileID: 1713926951}
-  flowersPos:
-  - {fileID: 1561644190}
-  - {fileID: 1356820618}
-  - {fileID: 136948359}
+  isSelected: 0
+  viewCol: {fileID: 0}
 --- !u!50 &752323189
 Rigidbody2D:
   serializedVersion: 4
@@ -1809,6 +1800,54 @@ CircleCollider2D:
   m_Offset: {x: 0.028756618, y: 0}
   serializedVersion: 2
   m_Radius: 0.6646967
+--- !u!1 &1157609073
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1157609075}
+  - component: {fileID: 1157609074}
+  m_Layer: 0
+  m_Name: CursorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1157609074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157609073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b6d78cd54aedf4cbeaf417f2208fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCursor: {fileID: 2800000, guid: f12349ccc6c35ea41914eed774e7fe5c, type: 3}
+  collectPollenCursor: {fileID: 2800000, guid: 74219fc7741461c47be44e2a2e727aed, type: 3}
+  collectNectarCursor: {fileID: 2800000, guid: a2dc15aa7224bd74386967debe37d290, type: 3}
+  forageCursor: {fileID: 2800000, guid: a5b5104f52f6c604994d2ff088a4636f, type: 3}
+--- !u!4 &1157609075
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157609073}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7927005, y: -2.0460887, z: -0.023094755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356820617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,11 +2744,8 @@ MonoBehaviour:
   nest: {fileID: 136948356}
   agent: {fileID: 1993818876}
   destination: {x: 0, y: 0, z: 0}
-  visionCol: {fileID: 368688744}
-  flowersPos:
-  - {fileID: 1561644190}
-  - {fileID: 1356820618}
-  - {fileID: 136948359}
+  isSelected: 0
+  viewCol: {fileID: 0}
 --- !u!50 &1993818874
 Rigidbody2D:
   serializedVersion: 4
@@ -2989,3 +3025,4 @@ SceneRoots:
   - {fileID: 1356820618}
   - {fileID: 136948359}
   - {fileID: 1034365085}
+  - {fileID: 1157609075}
