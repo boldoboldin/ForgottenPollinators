@@ -36,6 +36,16 @@ public class PlantCtrl : MonoBehaviour
 
     }
 
+    public void SpreadPollen()
+    {
+        Debug.Log("The flower " + this.name + " released pollen");
+    }
+
+    public void TransferNectar()
+    {
+        Debug.Log("The flower " + this.name + " transferred nectar");
+    }
+
     private void OnMouseEnter()
     {
         if (pollenCapacity != 0 && CursorManager.somethingSelected)
