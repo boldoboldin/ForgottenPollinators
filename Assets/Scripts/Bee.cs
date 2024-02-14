@@ -8,8 +8,6 @@ public class Bee : MonoBehaviour
     [SerializeField] private int maxHP;
     private int currentHP;
 
-    
-
     [SerializeField] private float maxStamina;
     private float currentStamina;
 

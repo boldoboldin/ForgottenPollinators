@@ -13,13 +13,15 @@ public class WorkerBeeCtrl : Bee
 
     [SerializeField] private GameObject nest;
 
-    [SerializeField] private PlantCtrl plantCtrl;
+    //private PlantCtrl targetPlantCtrl;
 
     private string currentAction;
 
     public static List<Bee> moveableUnits = new List<Bee>();
     public NavMeshAgent agent;
-    public Vector3 destination;
+
+    [SerializeField] private GameObject targetPlant;
+    [SerializeField] private Vector3 targetPlantPos;
     public bool isSelected;
 
     [SerializeField] private List<GameObject> flowersSeen;
@@ -34,7 +36,6 @@ public class WorkerBeeCtrl : Bee
 
 
         moveableUnits.Add(this);
-        destination = transform.position;
     }
 
     void Update()
@@ -92,18 +93,15 @@ public class WorkerBeeCtrl : Bee
 
         if (currentAction == "Browsing")
         {
+            agent.speed = 1f;
+            //Animator
+
             Browsing();
         }
 
         if (currentAction == "CollectPollen")
         {
-            delay = delay - 0.1f;
-
-            if (delay <= 0)
-            {
-                Collect("Pollen");
-                delay = Random.Range(100f, 600f);
-            }
+            Collect("Pollen");
         }
     }
 
@@ -124,7 +122,11 @@ public class WorkerBeeCtrl : Bee
                 if (CursorManager.cursorMode == "CollectPollen")
                 {
                     Move(hit.point);
+                    delay = 600f;
                     currentAction = "CollectPollen";
+                    targetPlant = hit.collider.gameObject;
+                    targetPlantPos = targetPlant.transform.position;
+
                     Debug.Log("The bee " + this.name + " is collecting pollen");
                 }
 
@@ -140,6 +142,9 @@ public class WorkerBeeCtrl : Bee
             else if (hit.collider.CompareTag("Walkable"))
             {
                 Move(hit.point);
+                agent.speed = 2f;
+
+                currentAction = "Idle";
             }
 
             Debug.Log("Clicked on: " + hit.collider.name + " " + hit.point);
@@ -161,7 +166,6 @@ public class WorkerBeeCtrl : Bee
     {
         agent.stoppingDistance = 0;
         agent.SetDestination(destination);
-        agent.speed = 2f;
     }
 
     private void Browsing()
@@ -182,29 +186,51 @@ public class WorkerBeeCtrl : Bee
 
     private void Collect(string resource)
     {
-        agent.isStopped = false;
-        agent.speed = 1f;
-        //Animator
+        PlantCtrl targetPlantCtrl = targetPlant.GetComponent<PlantCtrl>();
 
-        if (resource == "Pollen" && corbiculaLoad < corbiculaCapacity)
+        if (!targetPlantCtrl.isOccupied)
         {
-            int rndTargetFlower = Mathf.RoundToInt(Random.Range(0f, flowersSeen.Count));
-
-            plantCtrl.SpreadPollen();
-            Move(flowersSeen[rndTargetFlower].transform.position);
+            targetPlantCtrl.isOccupied = true;
         }
 
-        if (resource == "Nectar")
+        delay = delay - 0.1f;
+        int rndTargetFlower;
+
+        if (delay <= 0)
         {
-            Debug.Log("The bee " + this.name + " is collecting nectar");
-
-            if (cropLoad < cropCapacity)
+            if (resource == "Pollen" && corbiculaLoad < corbiculaCapacity)
             {
-                plantCtrl.TransferNectar();
+                targetPlantCtrl.SpreadPollen();
+                targetPlantCtrl.isOccupied = false;
 
-                int rndTargetFlower = Mathf.RoundToInt(Random.Range(0f, flowersSeen.Count));
+                if (Random.Range(0f, 1f) < 0.5f || flowersSeen.Count == 0)
+                {
+                    Move(targetPlant.transform.position);
+                }
+                else
+                {
+                    rndTargetFlower = Mathf.RoundToInt(Random.Range(0, flowersSeen.Count - 1));
+
+                    targetPlant = flowersSeen[rndTargetFlower];
+                    targetPlantPos = flowersSeen[rndTargetFlower].transform.position;
+                    targetPlantCtrl = flowersSeen[rndTargetFlower].GetComponent<PlantCtrl>();
+                }
+
+                Move(targetPlant.transform.position);
+            }
+
+            if (resource == "Nectar" && cropLoad < cropCapacity)
+            {
+                rndTargetFlower = Mathf.RoundToInt(Random.Range(0, flowersSeen.Count - 1));
+                targetPlantCtrl.TransferNectar();
+                targetPlantPos = flowersSeen[rndTargetFlower].transform.position;
+                targetPlantCtrl = flowersSeen[rndTargetFlower].GetComponent<PlantCtrl>();
+
+
                 Move(flowersSeen[rndTargetFlower].transform.position);
             }
+
+            delay = Random.Range(100f, 600f);
         }
     }
 
@@ -267,17 +293,33 @@ public class WorkerBeeCtrl : Bee
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        plantCtrl = collision.gameObject.GetComponent<PlantCtrl>();
+
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Flower"))
         {
-            Debug.Log("The bee " + this.name + " found flowers");
-            flowersSeen.Add(other.gameObject);
+            PlantCtrl plantCtrl = other.gameObject.GetComponent<PlantCtrl>();
+
+            if (plantCtrl.isOccupied == false && !flowersSeen.Contains(other.gameObject))
+            {
+                flowersSeen.Add(other.gameObject);
+            }
+
+            if (plantCtrl.isOccupied == true)
+            {
+                flowersSeen.Remove(other.gameObject);
+            }
         }
     }
+
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Flower"))
