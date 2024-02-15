@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class PlantCtrl : MonoBehaviour
 {
-    [SerializeField] private GameObject pollenFX;
-    [SerializeField] private float minPollenSpd;
-    [SerializeField] private float maxPollenSpd;
+    [SerializeField] private GameObject pollenSpawner;
     [SerializeField] private int minPollenAmount;
     [SerializeField] private int maxPollenAmount;
     [SerializeField] private int pollenCapacity;
-    private float pollenLoad;
+    public float pollenLoad;
 
     [SerializeField] private GameObject nectarFX;
     [SerializeField] private int nectarCapacity;
@@ -24,9 +22,15 @@ public class PlantCtrl : MonoBehaviour
 
     public bool isOccupied = false;
 
+    void Start()
+    {
+        pollenLoad = pollenCapacity;
+        nectarLoad = nectarCapacity;
+    }
+
     public void StartBloomPeriod()
     {
-        
+   
     }
 
     public void EndBloomPeriod()
@@ -40,15 +44,11 @@ public class PlantCtrl : MonoBehaviour
 
         for (int i = 0; i < rndAmount; i++)
         {
-            GameObject pollenInstance = Instantiate(pollenFX, transform.position, Quaternion.identity);
-
-            Vector2 rndDirection = Random.insideUnitCircle.normalized;
-
-            float rndSpd = Random.Range(minPollenSpd, maxPollenSpd);
-
-            Rigidbody2D pollenRb = pollenInstance.GetComponent<Rigidbody2D>();
-            pollenRb.AddForce(rndDirection * rndSpd, ForceMode2D.Impulse);
-            Destroy(pollenInstance, 7f);
+            if (pollenLoad > 0)
+            {
+                GameObject pollenInstance = Instantiate(pollenSpawner, transform.position, Quaternion.identity);
+                pollenLoad--;
+            }
         }
 
         Debug.Log("The flower " + this.name + " released pollen");

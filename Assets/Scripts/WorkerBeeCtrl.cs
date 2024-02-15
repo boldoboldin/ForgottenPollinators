@@ -42,11 +42,7 @@ public class WorkerBeeCtrl : Bee
     {
         if (CursorManager.cursorMode == "Default")
         {
-            if (Input.GetMouseButtonDown(0) && !isSelected)
-            {
-                //show info
-            }
-            else if (Input.GetMouseButtonDown(0) && isSelected)
+            if (Input.GetMouseButtonDown(0) && isSelected)
             {
                 Debug.Log("Unit" + this.name + " selected");
                 SetAction();
@@ -274,7 +270,7 @@ public class WorkerBeeCtrl : Bee
 
     }
 
-    // Select a unit
+    // Seleciona unidade
     private void OnMouseDown()
     {
         CursorManager.somethingSelected = true;
@@ -293,7 +289,11 @@ public class WorkerBeeCtrl : Bee
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        if (collision.gameObject.tag == "Pollen" && corbiculaLoad <= corbiculaCapacity)
+        {
+            corbiculaLoad++;
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -312,7 +312,7 @@ public class WorkerBeeCtrl : Bee
                 flowersSeen.Add(other.gameObject);
             }
 
-            if (plantCtrl.isOccupied == true)
+            if (plantCtrl.isOccupied == true || plantCtrl.pollenLoad <= 0)
             {
                 flowersSeen.Remove(other.gameObject);
             }
