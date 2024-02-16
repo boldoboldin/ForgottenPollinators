@@ -52,7 +52,7 @@ MonoBehaviour:
   maxPollenAmount: 3
   pollenCapacity: 10
   pollenLoad: 0
-  nectarFX: {fileID: 4363726866982981072, guid: eb80421c865af8e429669c746add83c3, type: 3}
+  nectarFX: {fileID: 4363726866982981072, guid: 6e3d783468fcdd14388fa09f74528aff, type: 3}
   nectarCapacity: 0
   lifeTimeExpectancy: 3
   isOccupied: 0

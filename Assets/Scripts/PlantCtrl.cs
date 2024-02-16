@@ -12,7 +12,7 @@ public class PlantCtrl : MonoBehaviour
 
     [SerializeField] private GameObject nectarFX;
     [SerializeField] private int nectarCapacity;
-    private float nectarLoad;
+    public float nectarLoad;
 
     
 
@@ -46,21 +46,20 @@ public class PlantCtrl : MonoBehaviour
         {
             if (pollenLoad > 0)
             {
-                GameObject pollenInstance = Instantiate(pollenSpawner, transform.position, Quaternion.identity);
+                Instantiate(pollenSpawner, transform.position, Quaternion.identity);
                 pollenLoad--;
             }
         }
 
-        Debug.Log("The flower " + this.name + " released pollen");
-        
-        //isOccupied = false;
+        Debug.Log("The flower " + this.name + " released pollen");  
     }
 
     public void TransferNectar()
     {
-        Debug.Log("The flower " + this.name + " transferred nectar");
         Instantiate(nectarFX, transform.position, Quaternion.identity);
-        //isOccupied = false;
+
+        Debug.Log("The flower " + this.name + " transferred nectar");
+        pollenLoad--;
     }
 
     public void OccupyFlower(bool isOccupied)

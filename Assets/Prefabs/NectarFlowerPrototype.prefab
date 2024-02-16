@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a52a2eac151047b3f4301b777cc2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pollenSpawner: {fileID: 0}
+  pollenSpawner: {fileID: 4363726866982981072, guid: eb80421c865af8e429669c746add83c3, type: 3}
   minPollenAmount: 0
   maxPollenAmount: 0
   pollenCapacity: 0
   pollenLoad: 0
-  nectarFX: {fileID: 0}
+  nectarFX: {fileID: 4363726866982981072, guid: 6e3d783468fcdd14388fa09f74528aff, type: 3}
   nectarCapacity: 10
   lifeTimeExpectancy: 3
   isOccupied: 0

@@ -315,14 +315,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f574eb93940d845ade3423562f62d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 10
-  maxStamina: 10
+  maxHP: 100
+  maxStamina: 100
+  currentStamina: 0
   lifeTimeExpectancy: 3
   corbiculaCapacity: 3
   corbiculaLoad: 0
   cropCapacity: 3
   cropLoad: 0
-  nest: {fileID: 0}
+  sprt: {fileID: 9190041527681239183}
   agent: {fileID: 6868500542657937795}
   targetPlant: {fileID: 0}
   targetPlantPos: {x: 0, y: 0, z: 0}

@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &24930066
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.79591346
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1110897
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
 --- !u!1 &136948356
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 136948359}
   - component: {fileID: 136948357}
+  - component: {fileID: 136948360}
   m_Layer: 0
   m_Name: NestPrototype
   m_TagString: Nest
@@ -191,11 +249,95 @@ Transform:
   - {fileID: 903741130}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &136948360
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136948356}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!4 &250885502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
   m_PrefabInstance: {fileID: 507007913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &280640836
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.8738127
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1784552
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
 --- !u!1001 &489448535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -549,6 +691,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &679073368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.9286501
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.1209264
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+--- !u!1001 &853777417
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6829352
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2054066
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
 --- !u!4 &899158711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
@@ -566,7 +822,7 @@ GameObject:
   - component: {fileID: 903741129}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Nest
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,6 +1174,177 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
   m_PrefabInstance: {fileID: 1679022441}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1355098544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.704688
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.72512114
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+--- !u!1001 &1413004772
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.3711212
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.047122
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4963712019450449411, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+      propertyPath: m_Name
+      value: PollenFlowerPrototype
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+--- !u!1001 &1422810078
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.965038
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.5176892
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
 --- !u!4 &1480863180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 985875356036445472, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
@@ -1402,6 +1829,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0adadb45e3d622488f5676356727e3a, type: 3}
+--- !u!1001 &1951796425
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1572863559216625069, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_Name
+      value: NectarFlowerPrototype (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.0951457
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.6687636
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2061194324290587955, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3966419a61741b84c9073ce5bc11eb6d, type: 3}
 --- !u!1 &2043399397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1594,3 +2078,11 @@ SceneRoots:
   - {fileID: 1828155255}
   - {fileID: 489448535}
   - {fileID: 1520211871}
+  - {fileID: 1355098544}
+  - {fileID: 853777417}
+  - {fileID: 1422810078}
+  - {fileID: 280640836}
+  - {fileID: 24930066}
+  - {fileID: 679073368}
+  - {fileID: 1951796425}
+  - {fileID: 1413004772}
