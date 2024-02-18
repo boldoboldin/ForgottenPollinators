@@ -39,6 +39,11 @@ public class CursorManager : MonoBehaviour
             Cursor.SetCursor(defaultCursor, cursorHotspot, CursorMode.ForceSoftware);
         }
 
+        if (cursorTexture == "Forage")
+        {
+            Cursor.SetCursor(forageCursor, cursorHotspot, CursorMode.ForceSoftware);
+        }
+
         if (cursorTexture == "CollectPollen")
         {
             Cursor.SetCursor(collectPollenCursor, cursorHotspot, CursorMode.ForceSoftware);

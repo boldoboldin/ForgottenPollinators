@@ -9,7 +9,7 @@ public class Bee : MonoBehaviour
     private int currentHP;
 
     [SerializeField] private float maxStamina;
-    private float currentStamina;
+    public float currentStamina;
 
     public bool IsExhausted = false;
 
@@ -25,6 +25,8 @@ public class Bee : MonoBehaviour
 
     private void Update()
     {
+        currentStamina = currentStamina - 0.001f;
+        
         if (currentStamina <= 0)
         {
             IsExhausted = true;
