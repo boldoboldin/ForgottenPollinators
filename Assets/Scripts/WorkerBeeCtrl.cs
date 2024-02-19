@@ -159,6 +159,8 @@ public class WorkerBeeCtrl : Bee
                     currentAction = "CollectNectar";
                     Debug.Log("The bee " + this.name + " is collecting nectar");
                 }
+
+                DeselectUnits();
             }
             else if (hit.collider.CompareTag("Nest"))
             {
@@ -169,6 +171,8 @@ public class WorkerBeeCtrl : Bee
                 nextAction = currentAction;
                 currentAction = "DeliverResources";
 
+                DeselectUnits();
+
                 Debug.Log("The bee " + this.name + " is returning to its home");
             }
             else if (hit.collider.CompareTag("Walkable"))
@@ -176,6 +180,9 @@ public class WorkerBeeCtrl : Bee
                 if (CursorManager.cursorMode == "Forage")
                 {
                     currentAction = "Forage";
+
+                    DeselectUnits();
+
                     Debug.Log("The bee " + this.name + " is browsing for flowers");
                 }
                 else
@@ -187,6 +194,7 @@ public class WorkerBeeCtrl : Bee
                 Move(hit.point);
             }
 
+            CursorManager.instance.ChangeCursor("Default");
             Debug.Log("Clicked on: " + hit.collider.name + " " + hit.point);
         }
     }
