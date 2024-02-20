@@ -56,10 +56,13 @@ public class PlantCtrl : MonoBehaviour
 
     public void TransferNectar()
     {
-        Instantiate(nectarFX, transform.position, Quaternion.identity);
+        if (nectarLoad > 0) 
+        {
+            Instantiate(nectarFX, transform.position, Quaternion.identity);
+            nectarLoad--;
 
-        Debug.Log("The flower " + this.name + " transferred nectar");
-        pollenLoad--;
+            Debug.Log("The flower " + this.name + " transferred nectar");
+        }
     }
 
     public void OccupyFlower(bool isOccupied)

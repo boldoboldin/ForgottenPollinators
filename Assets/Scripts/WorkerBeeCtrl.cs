@@ -271,7 +271,7 @@ public class WorkerBeeCtrl : Bee
                 targetPlantCtrl.TransferNectar();
                 targetPlantCtrl.isOccupied = false;
 
-                cropLoad++;
+                cropLoad++; // O erro ta aqui kkkkkkkk
 
                 if (Random.Range(0f, 1f) < 0.5f || flowersSeen.Count == 0)
                 {
