@@ -228,7 +228,6 @@ public class WorkerBeeCtrl : Bee
             forageDelay = Random.Range(100f, 600f);
         }
     }
-
     private void Collect(string resource)
     {
         agent.speed = 1.5f;
@@ -271,7 +270,10 @@ public class WorkerBeeCtrl : Bee
                 targetPlantCtrl.TransferNectar();
                 targetPlantCtrl.isOccupied = false;
 
-                cropLoad++; // O erro ta aqui kkkkkkkk
+                if (targetPlantCtrl.nectarLoad > 0)
+                {
+                    cropLoad++;
+                } 
 
                 if (Random.Range(0f, 1f) < 0.5f || flowersSeen.Count == 0)
                 {
@@ -314,9 +316,7 @@ public class WorkerBeeCtrl : Bee
 
     private void Deliver()
     {
-        float nestDist = Vector3.Distance(this.transform.position, nestPos);
-
-        if (nestDist <= 1) // Quando chegar ao ninho, "entra" e passa a entregar os recursos
+        if (Arrived(nestPos, 1) == true) // Quando chegar ao ninho, "entra" e passa a entregar os recursos
         {
             sprt.enabled = false;
             rb2D.isKinematic = true;
@@ -325,11 +325,9 @@ public class WorkerBeeCtrl : Bee
 
             for (int i = corbiculaLoad; i > 0; i--)
             {
-                if (deliveryDelay > 0)
-                {
-                    deliveryDelay--;
-                }
-                else
+                deliveryDelay = Mathf.Max(0, deliveryDelay - 1);
+
+                if (deliveryDelay == 0)
                 {
                     corbiculaLoad--;
                     deliveryDelay = 600f;
@@ -338,11 +336,9 @@ public class WorkerBeeCtrl : Bee
 
             for (int i = cropLoad; i > 0; i--)
             {
-                if (deliveryDelay > 0)
-                {
-                    deliveryDelay--;
-                }
-                else
+                deliveryDelay = Mathf.Max(0, deliveryDelay - 1);
+
+                if (deliveryDelay == 0)
                 {
                     cropLoad--;
                     deliveryDelay = 600f;
@@ -393,6 +389,21 @@ public class WorkerBeeCtrl : Bee
         }
     }
 
+    bool Arrived(Vector3 destination, float minDist)
+    {
+        float dist = Vector3.Distance(this.transform.position, destination);
+
+        if (dist <= minDist) // Quando chegou ao destino
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
     // Seleciona unidade
     private void OnMouseDown()
     {
@@ -409,6 +420,7 @@ public class WorkerBeeCtrl : Bee
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Pollen" && corbiculaLoad <= corbiculaCapacity)
