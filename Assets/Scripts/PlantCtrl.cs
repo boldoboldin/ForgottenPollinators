@@ -14,8 +14,6 @@ public class PlantCtrl : MonoBehaviour
     [SerializeField] private int nectarCapacity;
     public float nectarLoad;
 
-    
-
     //[SerializeField] private List<int> bloomPeriod;
     [SerializeField] private float lifeTimeExpectancy;
     private float lifeTime;
@@ -30,7 +28,7 @@ public class PlantCtrl : MonoBehaviour
 
     public void StartBloomPeriod()
     {
-   
+
     }
 
     public void EndBloomPeriod()

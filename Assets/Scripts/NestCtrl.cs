@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class NestCtrl : MonoBehaviour
 {
-    static int totalPollen;
-    static int totalHoney;
-    static int totalWax;
-    static float nestTemp;
-    static float nestHumidity;
+    public static int totalPollen;
+    public static int totalHoney;
+    public static int totalWax;
+    public static float nestTemp;
+    public static float nestHumidity;
     
-    static float ambientTemp;
-    static float ambientHumidity;
+    public static float ambientTemp;
+    public static float ambientHumidity;
 
-    static int totalHoneyPot;
-    static int totalPollenPot;
-    static int totalBroodCell;
+    public static int totalHoneyPot = 1;
+    public static int totalPollenPot = 1;
+    public static int maxWax = 60;
+    public static int totalBroodCell;
 
     public void AddResource(string resource)
     {
