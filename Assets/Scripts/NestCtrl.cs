@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class NestCtrl : MonoBehaviour
 {
-    public static int totalPollen;
-    public static int totalHoney;
+    [SerializeField] private UI_Ctrl uiCtrl;
+    
+    public static int totalPollen = 12;
+    public static int totalHoney = 12;
     public static int totalWax;
     public static float nestTemp;
     public static float nestHumidity;
     
-    public static float ambientTemp;
-    public static float ambientHumidity;
+    public static float environmentTemp;
+    public static float environmentHumidity;
 
     public static int totalHoneyPot = 1;
     public static int totalPollenPot = 1;
@@ -20,16 +22,18 @@ public class NestCtrl : MonoBehaviour
 
     public void AddResource(string resource)
     {
-        if (resource == "Nectar")
-        {
-            totalPollen++;
-            Debug.Log("Honey has been added to the nest reserve");
-        }
-
         if (resource == "Pollen")
         {
-            totalHoney++;
+            totalPollen++;
+            uiCtrl.SetPollen(totalPollen, totalPollenPot);
             Debug.Log("Pollen has been added to the nest reserve");
+        }
+
+        if (resource == "Nectar")
+        {
+            totalHoney++;
+            uiCtrl.SetHoney(totalHoney, totalHoneyPot);
+            Debug.Log("Honey has been added to the nest reserve");
         }
 
         if (resource == "Resin")
@@ -44,12 +48,14 @@ public class NestCtrl : MonoBehaviour
         if (structure == "HoneyPot")
         {
             totalHoneyPot++;
+            uiCtrl.SetHoney(totalHoney, totalHoneyPot);
             Debug.Log("A pot of honey was built");
         }
 
         if (structure == "PollenPot")
         {
             totalPollenPot++;
+            uiCtrl.SetPollen(totalPollen, totalPollenPot);
             Debug.Log("A pot of pollen was built");
         }
 
@@ -64,7 +70,7 @@ public class NestCtrl : MonoBehaviour
     {
         if (variation == "Ambient")
         {
-            ambientTemp = ambientTemp + degrees;
+            environmentTemp = environmentTemp + degrees;
         }
 
         if (variation == "Nest")
@@ -77,7 +83,7 @@ public class NestCtrl : MonoBehaviour
     {
         if (variation == "Ambient")
         {
-            ambientHumidity = ambientHumidity + percentage;
+            environmentHumidity = environmentHumidity + percentage;
         }
 
         if (variation == "Nest")
@@ -85,5 +91,4 @@ public class NestCtrl : MonoBehaviour
             nestHumidity = nestHumidity + percentage;
         }
     }
-
 }

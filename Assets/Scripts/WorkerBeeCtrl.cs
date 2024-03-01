@@ -318,6 +318,8 @@ public class WorkerBeeCtrl : Bee
     {
         if (Arrived(nestPos, 1) == true) // Quando chegar ao ninho, "entra" e passa a entregar os recursos
         {
+            NestCtrl nestCtrl = nest.GetComponent<NestCtrl>();
+
             sprt.enabled = false;
             rb2D.isKinematic = true;
 
@@ -329,7 +331,9 @@ public class WorkerBeeCtrl : Bee
 
                 if (deliveryDelay == 0)
                 {
+                    nestCtrl.AddResource("Pollen");
                     corbiculaLoad--;
+
                     deliveryDelay = 600f;
                 }
             }
@@ -340,7 +344,9 @@ public class WorkerBeeCtrl : Bee
 
                 if (deliveryDelay == 0)
                 {
+                    nestCtrl.AddResource("Nectar");
                     cropLoad--;
+
                     deliveryDelay = 600f;
                 }
             }
