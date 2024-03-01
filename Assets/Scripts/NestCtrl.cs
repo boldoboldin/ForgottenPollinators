@@ -6,19 +6,19 @@ public class NestCtrl : MonoBehaviour
 {
     [SerializeField] private UI_Ctrl uiCtrl;
     
-    public static int totalPollen = 12;
-    public static int totalHoney = 12;
-    public static int totalWax;
-    public static float nestTemp;
-    public static float nestHumidity;
-    
-    public static float environmentTemp;
-    public static float environmentHumidity;
+    private static int totalPollen = 12, totalHoney = 12, totalWax;
+    private static float nestTemp, nestHumidity;
 
-    public static int totalHoneyPot = 1;
-    public static int totalPollenPot = 1;
-    public static int maxWax = 60;
-    public static int totalBroodCell;
+    public static int totalHoneyPot = 1, totalPollenPot = 1, maxWax = 30, totalBroodCell;
+
+    private void Start()
+    {
+        uiCtrl.SetPollen(12, 1);
+        uiCtrl.SetHoney(12, 1);
+
+        uiCtrl.SetTemp(34, "nest");
+        uiCtrl.SetHumidity(50, "nest");
+    }
 
     public void AddResource(string resource)
     {
@@ -66,29 +66,13 @@ public class NestCtrl : MonoBehaviour
         }
     }
 
-    public void VaryTemperature(string variation, float degrees)
+    public void VaryNestTemperature(float degrees)
     {
-        if (variation == "Ambient")
-        {
-            environmentTemp = environmentTemp + degrees;
-        }
-
-        if (variation == "Nest")
-        {
-            nestTemp = nestTemp + degrees;
-        }
+  
     }
 
-    public void VaryHumidity(string variation, float percentage)
+    public void VaryNestHumidity(float degrees)
     {
-        if (variation == "Ambient")
-        {
-            environmentHumidity = environmentHumidity + percentage;
-        }
-
-        if (variation == "Nest")
-        {
-            nestHumidity = nestHumidity + percentage;
-        }
+        
     }
 }

@@ -14,45 +14,21 @@ public class UI_Ctrl : MonoBehaviour
     [SerializeField] TMP_Text larvasText;
     [SerializeField] TMP_Text workersText;
     [SerializeField] TMP_Text queensText;
-
-    [SerializeField] TMP_Text totalPollenText;
-    [SerializeField] TMP_Text honeyText;
-    [SerializeField] TMP_Text waxText;
     [SerializeField] TMP_Text broodCellsText;
 
-    [SerializeField] TMP_Text nestTempText;
-    [SerializeField] TMP_Text nestHumidityText;
+    [SerializeField] TMP_Text totalPollenText, honeyText, waxText;
+    [SerializeField] Slider totalPollenBar, honeyBar, waxBar;
 
-    [SerializeField] Slider totalPollenBar;
-    [SerializeField] Slider honeyBar;
-    [SerializeField] Slider waxBar;
-
-    [SerializeField] Slider nestTempBar;
-    [SerializeField] Slider nestHumidityBar;
-
-    [SerializeField] Image nestTempFill;
-    [SerializeField] Image nestTempIcon;
+    [SerializeField] TMP_Text nestTempText, nestHumidityText;
+    [SerializeField] Slider nestTempBar, nestHumidityBar;
+    [SerializeField] Image nestTempFill, nestTempIcon;
 
     private List<WorkerBeeCtrl> workersList = new List<WorkerBeeCtrl>();
 
     [Header("Environment variables")]
-    [SerializeField] TMP_Text environmentTempText;
-    [SerializeField] TMP_Text environmentHumidityText;
-
-    [SerializeField] Slider environmentTempBar;
-    [SerializeField] Slider ambientHumidityBar;
-
-    [SerializeField] Image environmentTempFill;
-    [SerializeField] Image environmentTempIcon;
-
-    private void Start()
-    {
-        SetPollen(0, 1);
-        SetHoney(0, 1);
-
-        SetTemp(34, 27);
-        SetHumidity(50, 72);
-    }
+    [SerializeField] TMP_Text environmentTempText, environmentHumidityText;
+    [SerializeField] Slider environmentTempBar, environmentHumidityBar;
+    [SerializeField] Image environmentTempFill, environmentTempIcon;
 
     void Update()
     {
@@ -62,42 +38,52 @@ public class UI_Ctrl : MonoBehaviour
 
         broodCellsText.SetText("/" + NestCtrl.totalBroodCell);
 
-        waxText.SetText(NestCtrl.totalWax + "/" + (NestCtrl.maxWax));
+        //waxText.SetText(NestCtrl.totalWax + "/" + (NestCtrl.maxWax));
     }
 
     public void SetPollen(int pollenAmount, int pollenPotAmount)
     {
         totalPollenBar.value = pollenAmount;
-        totalPollenBar.maxValue = pollenPotAmount;
+        totalPollenBar.maxValue = pollenPotAmount * 60;
         totalPollenText.SetText(pollenAmount + "/" + (pollenPotAmount * 60));
     }
 
     public void SetHoney(int honeyAmount, int honeyPotAmount)
     {
         honeyBar.value = honeyAmount;
-        totalPollenBar.maxValue = honeyPotAmount;
+        totalPollenBar.maxValue = honeyPotAmount * 60;
         honeyText.SetText(honeyAmount + "/" + (honeyPotAmount * 60));
     }
 
 
-    public void SetTemp(float nestTemp, float environmentTemp)
+    public void SetTemp(float temp, string target)
     {
-        nestTempBar.value = nestTemp;
-        nestTempText.SetText(nestTemp + "°c");
-        nestTempFill.color = tempGradient.Evaluate(nestTempBar.normalizedValue);
-
-        //environmentTempBar.value = environmentTemp;
-        //environmentTempText.SetText(environmentTemp + "°c");
-        //environmentTempFill.color = tempGradient.Evaluate(environmentTempBar.normalizedValue);
+        if (target == "nest")
+        {
+            nestTempBar.value = temp;
+            nestTempText.SetText(temp + "°c");
+            nestTempFill.color = tempGradient.Evaluate(nestTempBar.normalizedValue);
+        }
+        else if (target == "environment")
+        {
+            environmentTempBar.value = temp;
+            environmentTempText.SetText(temp + "°c");
+            environmentTempFill.color = tempGradient.Evaluate(environmentTempBar.normalizedValue);
+        }
     }
 
-    public void SetHumidity(float nestHumidity, float environmentHumidity)
+    public void SetHumidity(float humidity, string target)
     {
-        nestHumidityBar.value = nestHumidity;
-        nestHumidityText.SetText(nestHumidity + "%");
-
-        //environmentHumidityBar.value = environmentHumidity;
-        //environmentHumidityText.SetText(environmentHumidity + "%");
+        if (target == "nest")
+        {
+            nestHumidityBar.value = humidity;
+            nestHumidityText.SetText(humidity + "%");
+        }
+        else if (target == "environment")
+        {
+            environmentHumidityBar.value = humidity;
+            environmentHumidityText.SetText(humidity + "%");
+        } 
     }
 
     public void UpdateWorkersList()
