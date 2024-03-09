@@ -43,7 +43,7 @@ public class NestCtrl : MonoBehaviour
         }
     }
     
-    public void CreateStructure(string structure)
+    public void BuildStructure(string structure)
     {
         if (structure == "HoneyPot")
         {

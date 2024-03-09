@@ -83,6 +83,30 @@ public class WorkerBeeCtrl : Bee
             }
         }
 
+        if (CursorManager.cursorMode == "BuildPollenPot")
+        {
+            if (Input.GetMouseButtonDown(0) && isSelected)
+            {
+                SetAction();
+            }
+        }
+
+        if (CursorManager.cursorMode == "BuildHoneyPot")
+        {
+            if (Input.GetMouseButtonDown(0) && isSelected)
+            {
+                SetAction();
+            }
+        }
+
+        if (CursorManager.cursorMode == "BuildBroodCell")
+        {
+            if (Input.GetMouseButtonDown(0) && isSelected)
+            {
+                SetAction();
+            }
+        }
+
         if (Input.GetMouseButtonDown(1) || (Input.GetKeyDown(KeyCode.Escape)))
         {
             Debug.Log("Deselected units");
@@ -104,6 +128,26 @@ public class WorkerBeeCtrl : Bee
             CursorManager.instance.ChangeCursor("CollectNectar");
         }
 
+        if (Input.GetKeyDown(KeyCode.R) && isSelected)
+        {
+            CursorManager.instance.ChangeCursor("CollectResin");
+        }
+
+        if (Input.GetKeyDown(KeyCode.B) && isSelected)
+        {
+            CursorManager.instance.ChangeCursor("BuildPollenPot");
+        }
+
+        if (Input.GetKeyDown(KeyCode.H) && isSelected)
+        {
+            CursorManager.instance.ChangeCursor("BuildHoneyPot");
+        }
+
+        if (Input.GetKeyDown(KeyCode.C) && isSelected)
+        {
+            CursorManager.instance.ChangeCursor("BuildBroodCell");
+        }
+
 
         // Update behaviors 
         if (currentAction == "Forage")
@@ -119,6 +163,21 @@ public class WorkerBeeCtrl : Bee
         if (currentAction == "CollectNectar")
         {
             Collect("Nectar");
+        }
+
+        if (currentAction == "BuildPollenPot")
+        {
+            Build("PollenPot");
+        }
+
+        if (currentAction == "BuildHoneyPot")
+        {
+            Build("HoneyPot");
+        }
+
+        if (currentAction == "BuildBroodCell")
+        {
+            Build("BroodCell");
         }
 
         if (currentAction == "DeliverResources")
@@ -168,12 +227,35 @@ public class WorkerBeeCtrl : Bee
                 agent.speed = 1.5f;
                 Move(nestPos);
 
-                nextAction = currentAction;
-                currentAction = "DeliverResources";
+                // Trazer o verificador de Arrive para cá
 
-                DeselectUnits();
+                if (CursorManager.cursorMode == "Default")
+                {
+                    nextAction = currentAction;
+                    currentAction = "DeliverResources";
 
-                Debug.Log("The bee " + this.name + " is returning to its home");
+                    Debug.Log("The bee " + this.name + " is returning to its home");
+                }
+
+                if (CursorManager.cursorMode == "BuildPollenPot")
+                {
+                    currentAction = "BuildPollenPot";
+                    Debug.Log("The bee " + this.name + " is building a pollen pot");
+                }
+
+                if (CursorManager.cursorMode == "BuildHoneyPot")
+                {
+                    currentAction = "BuildHoneyPot";
+                    Debug.Log("The bee " + this.name + " is building a honey pot");
+                }
+
+                if (CursorManager.cursorMode == "BuildBroodCell")
+                {
+                    currentAction = "BuildBroodCell";
+                    Debug.Log("The bee " + this.name + " is building a brood cell");
+                }
+
+                DeselectUnits();  
             }
             else if (hit.collider.CompareTag("Walkable"))
             {
@@ -375,9 +457,23 @@ public class WorkerBeeCtrl : Bee
 
     }
 
-    public void Construct(string structure)
+    public void Build(string structure)
     {
+        if (Arrived(nestPos, 1) == true) // Quando chegar ao ninho, "entra" para construir a estrutura
+        {
+            NestCtrl nestCtrl = nest.GetComponent<NestCtrl>();
 
+            sprt.enabled = false;
+            rb2D.isKinematic = true;
+
+            Debug.Log("The bee " + this.name + " entered the nest");
+            nestCtrl.BuildStructure(structure);
+
+            currentAction = "Idle";
+
+            sprt.enabled = true;
+            rb2D.isKinematic = false;
+        }
     }
 
     private void SetRandomDestination()

@@ -6822,6 +6822,9 @@ MonoBehaviour:
   collectPollenCursor: {fileID: 2800000, guid: 74219fc7741461c47be44e2a2e727aed, type: 3}
   collectNectarCursor: {fileID: 2800000, guid: a2dc15aa7224bd74386967debe37d290, type: 3}
   forageCursor: {fileID: 2800000, guid: a5b5104f52f6c604994d2ff088a4636f, type: 3}
+  buildPollenPotCursor: {fileID: 2800000, guid: f458932e03a734547beb5206bdb1950b, type: 3}
+  buildHoneyPotCursor: {fileID: 2800000, guid: 529ad5b0af3b39641a8e6e1b8d08d8eb, type: 3}
+  buildBroodCellCursor: {fileID: 2800000, guid: 4d881b7d58217784a86694c580e79d39, type: 3}
 --- !u!4 &1157609075
 Transform:
   m_ObjectHideFlags: 0

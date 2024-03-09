@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] private Texture2D defaultCursor, collectPollenCursor, collectNectarCursor, forageCursor;
+    [SerializeField] private Texture2D defaultCursor, collectPollenCursor, collectNectarCursor, forageCursor, buildPollenPotCursor, buildHoneyPotCursor, buildBroodCellCursor;
     private Vector2 cursorHotspot;
 
     public static string cursorMode = "Default";
@@ -52,6 +52,21 @@ public class CursorManager : MonoBehaviour
         if (cursorTexture == "CollectNectar")
         {
             Cursor.SetCursor(collectNectarCursor, cursorHotspot, CursorMode.ForceSoftware);
+        }
+
+        if (cursorTexture == "BuildPollenPot")
+        {
+            Cursor.SetCursor(buildPollenPotCursor, cursorHotspot, CursorMode.ForceSoftware);
+        }
+
+        if (cursorTexture == "BuildHoneyPot")
+        {
+            Cursor.SetCursor(buildHoneyPotCursor, cursorHotspot, CursorMode.ForceSoftware);
+        }
+
+        if (cursorTexture == "BuildBroodCell")
+        {
+            Cursor.SetCursor(buildBroodCellCursor, cursorHotspot, CursorMode.ForceSoftware);
         }
 
         cursorMode = cursorTexture;
