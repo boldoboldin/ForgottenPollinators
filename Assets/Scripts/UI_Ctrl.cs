@@ -35,9 +35,6 @@ public class UI_Ctrl : MonoBehaviour
         UpdateWorkersList();
 
         workersText.text = workersList.Count.ToString();
-
-        broodCellsText.SetText("/" + NestCtrl.totalBroodCell);
-
         //waxText.SetText(NestCtrl.totalWax + "/" + (NestCtrl.maxWax));
     }
 
@@ -51,8 +48,13 @@ public class UI_Ctrl : MonoBehaviour
     public void SetHoney(int honeyAmount, int honeyPotAmount)
     {
         honeyBar.value = honeyAmount;
-        totalPollenBar.maxValue = honeyPotAmount * 60;
+        honeyBar.maxValue = honeyPotAmount * 60;
         honeyText.SetText(honeyAmount + "/" + (honeyPotAmount * 60));
+    }
+
+    public void SetWax(int totalWax)
+    {
+        waxText.SetText(totalWax + "");
     }
 
 
@@ -86,7 +88,12 @@ public class UI_Ctrl : MonoBehaviour
         } 
     }
 
-    public void UpdateWorkersList()
+    public void SetBroodCells(int totalBroodCell)
+    {
+        broodCellsText.SetText("/" + totalBroodCell);
+    }
+
+public void UpdateWorkersList()
     {
         workersList.Clear();
 

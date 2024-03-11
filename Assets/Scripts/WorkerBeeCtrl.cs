@@ -221,6 +221,21 @@ public class WorkerBeeCtrl : Bee
 
                 DeselectUnits();
             }
+            else if (hit.collider.CompareTag("Flower") || (hit.collider.CompareTag("Trunk")))
+            {
+                collectDelay = 600f;
+                targetPlant = hit.collider.gameObject;
+                targetPlantPos = targetPlant.transform.position;
+
+                agent.stoppingDistance = 0;
+                Move(targetPlantPos);
+
+                if (CursorManager.cursorMode == "CollectResin")
+                {
+                    currentAction = "CollectResin";
+                    Debug.Log("The bee " + this.name + " is collecting resin");
+                }
+            }
             else if (hit.collider.CompareTag("Nest"))
             {
                 agent.stoppingDistance = 1;
