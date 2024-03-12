@@ -46,6 +46,8 @@ public class WorkerBeeCtrl : Bee
 
         nest = GameObject.FindGameObjectWithTag("Nest");
         nestPos = new Vector3(nest.transform.position.x, nest.transform.position.y, nest.transform.position.z);
+
+        currentStamina = maxStamina;
     }
 
     void Update()
@@ -153,36 +155,53 @@ public class WorkerBeeCtrl : Bee
         if (currentAction == "Forage")
         {
             Forage();
+            SpendStamina(0.01f);
         }
 
         if (currentAction == "CollectPollen")
         {
             Collect("Pollen");
+            SpendStamina(0.1f);
         }
 
         if (currentAction == "CollectNectar")
         {
             Collect("Nectar");
+            SpendStamina(0.1f);
         }
 
         if (currentAction == "BuildPollenPot")
         {
             Build("PollenPot");
+            SpendStamina(1f);
         }
 
         if (currentAction == "BuildHoneyPot")
         {
             Build("HoneyPot");
+            SpendStamina(1f);
         }
 
         if (currentAction == "BuildBroodCell")
         {
             Build("BroodCell");
+            SpendStamina(1f);
         }
 
         if (currentAction == "DeliverResources")
         {
             Deliver();
+        }
+
+        if (currentStamina <= 0)
+        {
+            agent.stoppingDistance = 1;
+            agent.speed = 1.5f;
+            Move(nestPos);
+
+            currentAction = "DeliverResources";
+
+            Debug.Log("The bee " + this.name + " is returning to its home");
         }
     }
 
@@ -393,7 +412,7 @@ public class WorkerBeeCtrl : Bee
 
 
         // Return to the nest to deliver resources and restore stamina
-        if (currentAction == "CollectPollen" && corbiculaLoad >= corbiculaCapacity || currentAction == "CollectNectar" && cropLoad >= cropCapacity || IsExhausted || flowersSeen.Count < 0)
+        if (currentAction == "CollectPollen" && corbiculaLoad >= corbiculaCapacity || currentAction == "CollectNectar" && cropLoad >= cropCapacity || IsExhausted || flowersSeen.Count < 0 || currentStamina <= 0)
         {
             if (flowersSeen.Count < 0)
             {
@@ -448,7 +467,13 @@ public class WorkerBeeCtrl : Bee
                 }
             }
 
-            if (corbiculaLoad <= 0 && cropLoad <= 0)
+            while (currentStamina < maxStamina)
+            {
+                nestCtrl.Consume(1);
+                currentStamina += 500;
+            }
+
+            if (corbiculaLoad <= 0 && cropLoad <= 0 && currentStamina >= maxStamina - 10)
             {
                 sprt.enabled = true;
                 rb2D.isKinematic = true;
@@ -489,6 +514,11 @@ public class WorkerBeeCtrl : Bee
             sprt.enabled = true;
             rb2D.isKinematic = false;
         }
+    }
+
+    void SpendStamina(float expenditure)
+    {
+        currentStamina = currentStamina - expenditure;
     }
 
     private void SetRandomDestination()

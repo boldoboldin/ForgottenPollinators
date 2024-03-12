@@ -316,8 +316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
-  maxStamina: 100
+  maxStamina: 1000
   currentStamina: 0
+  IsExhausted: 0
   lifeTimeExpectancy: 3
   corbiculaCapacity: 3
   corbiculaLoad: 0
@@ -329,7 +330,6 @@ MonoBehaviour:
   targetPlantPos: {x: 0, y: 0, z: 0}
   isSelected: 0
   flowersSeen: []
-  delay: 0
 --- !u!195 &6868500542657937795
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -45,7 +45,16 @@ public class NestCtrl : MonoBehaviour
             Debug.Log("Wax has been added to the nest reserve");
         }
     }
-    
+
+    public void Consume(int amount)
+    {
+        totalPollen -= amount;
+        totalHoney -= amount;
+
+        uiCtrl.SetPollen(totalPollen, totalPollenPot);
+        uiCtrl.SetHoney(totalHoney, totalHoneyPot);
+    }
+
     public void BuildStructure(string structure)
     {
         if (structure == "HoneyPot")

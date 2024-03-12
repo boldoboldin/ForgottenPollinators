@@ -8,7 +8,7 @@ public class Bee : MonoBehaviour
     [SerializeField] private int maxHP;
     private int currentHP;
 
-    [SerializeField] private float maxStamina;
+    [SerializeField] public float maxStamina;
     public float currentStamina;
 
     public bool IsExhausted = false;

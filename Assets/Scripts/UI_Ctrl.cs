@@ -41,15 +41,15 @@ public class UI_Ctrl : MonoBehaviour
     public void SetPollen(int pollenAmount, int pollenPotAmount)
     {
         totalPollenBar.value = pollenAmount;
-        totalPollenBar.maxValue = pollenPotAmount * 60;
-        totalPollenText.SetText(pollenAmount + "/" + (pollenPotAmount * 60));
+        totalPollenBar.maxValue = pollenPotAmount * 30;
+        totalPollenText.SetText(pollenAmount + "/" + (pollenPotAmount * 30));
     }
 
     public void SetHoney(int honeyAmount, int honeyPotAmount)
     {
         honeyBar.value = honeyAmount;
-        honeyBar.maxValue = honeyPotAmount * 60;
-        honeyText.SetText(honeyAmount + "/" + (honeyPotAmount * 60));
+        honeyBar.maxValue = honeyPotAmount * 30;
+        honeyText.SetText(honeyAmount + "/" + (honeyPotAmount * 30));
     }
 
     public void SetWax(int totalWax)
