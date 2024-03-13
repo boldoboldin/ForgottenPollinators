@@ -48,8 +48,28 @@ public class NestCtrl : MonoBehaviour
 
     public void Consume(int amount)
     {
-        totalPollen -= amount;
-        totalHoney -= amount;
+        if (Random.Range(0f, 1f) < 0.5f)
+        {
+            if (totalPollen > 0)
+            {
+                totalPollen -= amount;
+            }
+            else if (totalHoney > 0)
+            {
+                totalHoney -= amount;
+            }
+        }
+        else
+        {
+            if (totalHoney > 0)
+            {
+                totalHoney -= amount;
+            }
+            else if (totalPollen > 0)
+            {
+                totalPollen -= amount;
+            }
+        }
 
         uiCtrl.SetPollen(totalPollen, totalPollenPot);
         uiCtrl.SetHoney(totalHoney, totalHoneyPot);

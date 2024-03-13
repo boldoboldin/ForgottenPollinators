@@ -192,17 +192,6 @@ public class WorkerBeeCtrl : Bee
         {
             Deliver();
         }
-
-        if (currentStamina <= 0)
-        {
-            agent.stoppingDistance = 1;
-            agent.speed = 1.5f;
-            Move(nestPos);
-
-            currentAction = "DeliverResources";
-
-            Debug.Log("The bee " + this.name + " is returning to its home");
-        }
     }
 
     public void SetAction()
@@ -343,6 +332,18 @@ public class WorkerBeeCtrl : Bee
 
             forageDelay = Random.Range(100f, 600f);
         }
+
+        if (currentStamina <= 0)
+        {
+            agent.stoppingDistance = 1;
+            agent.speed = 1.5f;
+            Move(nestPos);
+
+            nextAction = currentAction;
+            currentAction = "DeliverResources";
+
+            Debug.Log("The bee " + this.name + " is returning to its home");
+        }
     }
     private void Collect(string resource)
     {
@@ -414,15 +415,8 @@ public class WorkerBeeCtrl : Bee
         // Return to the nest to deliver resources and restore stamina
         if (currentAction == "CollectPollen" && corbiculaLoad >= corbiculaCapacity || currentAction == "CollectNectar" && cropLoad >= cropCapacity || IsExhausted || flowersSeen.Count < 0 || currentStamina <= 0)
         {
-            if (flowersSeen.Count < 0)
-            {
-                nextAction = "Idle";
-            }
-            else
-            {
-                nextAction = currentAction; // Defines the action you were already performing as the next action
-            }
-
+            nextAction = currentAction; // Defines the action you were already performing as the next action
+    
             Move(nestPos);
             currentAction = "DeliverResources";
 
@@ -467,7 +461,7 @@ public class WorkerBeeCtrl : Bee
                 }
             }
 
-            while (currentStamina < maxStamina)
+            while (currentStamina <= maxStamina)
             {
                 nestCtrl.Consume(1);
                 currentStamina += 500;
@@ -478,7 +472,14 @@ public class WorkerBeeCtrl : Bee
                 sprt.enabled = true;
                 rb2D.isKinematic = true;
 
-                if (nextAction == "CollectPollen" || nextAction == "CollectNectar")
+                if (nextAction == "Forage")
+                {
+                    agent.stoppingDistance = 0;
+                    SetRandomDestination();
+
+                    currentAction = nextAction;
+                }
+                if (nextAction == "CollectPollen" || nextAction == "CollectNectar" || nextAction == "Forage")
                 {
                     Move(targetPlant.transform.position);
                     currentAction = nextAction;
