@@ -17,6 +17,7 @@ public class Bee : MonoBehaviour
     [SerializeField] private float lifeTimeExpectancy;
     private float lifeTime;
 
+
     private void Start()
     {
         currentHP = maxHP;
@@ -35,10 +36,6 @@ public class Bee : MonoBehaviour
         {
             IsExhausted = false;
         }
-    }
-
-    public void Feed()
-    {
 
     }
 }

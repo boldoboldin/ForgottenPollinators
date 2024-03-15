@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 using UnityEngine.AI;
 
 public class WorkerBeeCtrl : Bee
 {
+    [SerializeField] private VisualEffect vfxRenderer;
+
+
     [SerializeField] private int corbiculaCapacity;
     [SerializeField] private int corbiculaLoad;
 
@@ -52,6 +56,9 @@ public class WorkerBeeCtrl : Bee
 
     void Update()
     {
+        vfxRenderer.SetVector3("ColliderPos", transform.position);
+
+
         if (CursorManager.cursorMode == "Default")
         {
             if (Input.GetMouseButtonDown(0) && isSelected)
