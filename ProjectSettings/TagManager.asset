@@ -19,7 +19,7 @@ TagManager:
   - Bees
   - Flowers
   - MinimapIcons
-  - 
+  - FogOfWar
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: FX
     uniqueID: 3996641549
+    locked: 0
+  - name: Secundary
+    uniqueID: 2597517853
     locked: 0
   - name: UI
     uniqueID: 1959980271

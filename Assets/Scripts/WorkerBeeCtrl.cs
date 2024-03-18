@@ -38,6 +38,12 @@ public class WorkerBeeCtrl : Bee
     private float collectDelay = 600f;
     private float deliveryDelay = 200f;
 
+    public FogOfWarCtrl fogOfWarCtrl;
+    public Transform secondaryFogOfWar;
+    [Range(0, 5)]
+    public float sightDistance;
+    public float checkInterval;
+
     void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
@@ -52,6 +58,9 @@ public class WorkerBeeCtrl : Bee
         nestPos = new Vector3(nest.transform.position.x, nest.transform.position.y, nest.transform.position.z);
 
         currentStamina = maxStamina;
+
+        StartCoroutine(CheckFogOfWar(checkInterval));
+        secondaryFogOfWar.localScale = new Vector2(sightDistance*10, sightDistance * 10);
     }
 
     void Update()
@@ -612,6 +621,15 @@ public class WorkerBeeCtrl : Bee
         if (other.CompareTag("Flower"))
         {
             flowersSeen.Remove(other.gameObject);
+        }
+    }
+
+    private IEnumerator CheckFogOfWar(float checkInterval)
+    {
+        while (true)
+        {
+            fogOfWarCtrl.MakeHole(transform.position, sightDistance);
+            yield return new WaitForSeconds(checkInterval);
         }
     }
 }
