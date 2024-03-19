@@ -3098,6 +3098,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415057300201189716, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: vfxRenderer
       value: 
@@ -3106,6 +3110,14 @@ PrefabInstance:
       propertyPath: fogOfWarCtrl
       value: 
       objectReference: {fileID: 945805912}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: checkInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: sightDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3791751468637540246, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: m_Name
       value: WorkerPrototype (1)
@@ -6985,7 +6997,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.6, g: 0.67058825, b: 0.69803923, a: 1}
+  m_Color: {r: 0.11280703, g: 0.13289869, b: 0.14150941, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8375,13 +8387,13 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 141.3
+  field of view: 121
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 8400000, guid: 9675b57a63d337a489a117cb63ceab43, type: 2}
   m_TargetDisplay: 0
@@ -9622,7 +9634,7 @@ GameObject:
   - component: {fileID: 1499440080}
   - component: {fileID: 1499440082}
   - component: {fileID: 1499440081}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Walkable
   m_TagString: Walkable
   m_Icon: {fileID: 0}
@@ -9801,6 +9813,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415057300201189716, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: vfxRenderer
       value: 
@@ -9809,6 +9825,14 @@ PrefabInstance:
       propertyPath: fogOfWarCtrl
       value: 
       objectReference: {fileID: 945805912}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: checkInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: sightDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3791751468637540246, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: m_Name
       value: WorkerPrototype (2)
@@ -12012,6 +12036,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 415057300201189716, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: vfxRenderer
       value: 
@@ -12020,6 +12048,14 @@ PrefabInstance:
       propertyPath: fogOfWarCtrl
       value: 
       objectReference: {fileID: 945805912}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: checkInterval
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: sightDistance
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3791751468637540246, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: m_Name
       value: WorkerPrototype
