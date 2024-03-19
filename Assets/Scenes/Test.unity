@@ -2343,6 +2343,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2046796987}
+  - {fileID: 995913276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &329529432
@@ -6093,9 +6094,9 @@ SpriteMask:
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
   m_BackSortingLayer: 0
-  m_FrontSortingOrder: 0
+  m_FrontSortingOrder: 1
   m_BackSortingOrder: 0
-  m_IsCustomRangeActive: 0
+  m_IsCustomRangeActive: 1
   m_SpriteSortPoint: 0
 --- !u!4 &945805911
 Transform:
@@ -6109,8 +6110,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1073086322}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &945805912
@@ -6418,7 +6418,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 329529431}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013931456
 GameObject:
@@ -6948,12 +6948,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073086321}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 303.59, y: 187.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 945805911}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1073086323
 SpriteRenderer:
@@ -6997,7 +6997,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.11280703, g: 0.13289869, b: 0.14150941, a: 1}
+  m_Color: {r: 0.11280703, g: 0.13289869, b: 0.14150941, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -8598,6 +8598,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322212781}
   m_CullTransparentMesh: 1
+--- !u!4 &1326229234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4530987873601452919, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+  m_PrefabInstance: {fileID: 1828155255}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1345531799
 GameObject:
   m_ObjectHideFlags: 0
@@ -12056,6 +12061,10 @@ PrefabInstance:
       propertyPath: sightDistance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1178754864868467316, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
+      propertyPath: secondaryFogOfWar
+      value: 
+      objectReference: {fileID: 1326229234}
     - target: {fileID: 3791751468637540246, guid: cdeb043342b09c64d92f1f7d656dba26, type: 3}
       propertyPath: m_Name
       value: WorkerPrototype
@@ -13675,7 +13684,7 @@ SceneRoots:
   - {fileID: 329529431}
   - {fileID: 1318479378}
   - {fileID: 945805911}
-  - {fileID: 995913276}
+  - {fileID: 1073086322}
   - {fileID: 136948359}
   - {fileID: 1034365085}
   - {fileID: 1570812944}

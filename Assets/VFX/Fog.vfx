@@ -665,7 +665,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614583}
   - {fileID: 8926484042661614585}
   dataType: 0
-  capacity: 60000
+  capacity: 20000
   stripCapacity: 16
   particlePerStripCount: 16
   needsComputeBounds: 0
@@ -2164,7 +2164,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.8806304931640625,"y":-0.9708070755004883,"z":0.0},"size":{"x":51.970603942871097,"y":39.0697021484375,"z":1.0}}'
+      m_SerializableObject: '{"center":{"x":0.181656613945961,"y":-1.2854461669921876,"z":0.0},"size":{"x":169.85833740234376,"y":137.16604614257813,"z":1.0}}'
     m_Space: 0
   m_Property:
     name: Box
