@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class Bee : MonoBehaviour
 {
-    [SerializeField] private int maxHP;
-    private int currentHP;
+    public int maxHP, currentHP;
+    
 
     [SerializeField] public float maxStamina;
     public float currentStamina;
@@ -37,5 +37,10 @@ public class Bee : MonoBehaviour
             IsExhausted = false;
         }
 
+    }
+
+    public void TakeDamage(int amount)
+    {
+        currentHP -= amount;
     }
 }

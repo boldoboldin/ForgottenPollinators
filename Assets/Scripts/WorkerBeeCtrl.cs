@@ -8,6 +8,8 @@ public class WorkerBeeCtrl : Bee
 {
     [SerializeField] private VisualEffect vfxRenderer;
 
+    [SerializeField] private UI_Bee uiBee;
+    [SerializeField] private GameObject infoTag;
 
     [SerializeField] private int corbiculaCapacity;
     [SerializeField] private int corbiculaLoad;
@@ -65,6 +67,8 @@ public class WorkerBeeCtrl : Bee
 
     void Update()
     {
+        uiBee.DrawHearts();
+        
         vfxRenderer.SetVector3("ColliderPos", transform.position);
 
 
@@ -536,6 +540,7 @@ public class WorkerBeeCtrl : Bee
     void SpendStamina(float expenditure)
     {
         currentStamina = currentStamina - expenditure;
+        uiBee.UpdateStaminaBar(amount);
     }
 
     private void SetRandomDestination()
