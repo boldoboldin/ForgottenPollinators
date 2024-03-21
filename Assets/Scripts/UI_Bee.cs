@@ -8,8 +8,8 @@ public class UI_Bee : MonoBehaviour
     [SerializeField] GameObject heartPrefab;
     [SerializeField] Bee bee;
 
-    [SerializeField] private Slider staminaBar;
-    [SerializeField] private Slider corbiculaBar;
+    [SerializeField] private Slider staminaBar, corbiculaPollenBar, corbiculaResinBar, cropBar;
+
 
     List<HealthHeart> hearts = new List<HealthHeart>();
 
@@ -57,9 +57,21 @@ public class UI_Bee : MonoBehaviour
         staminaBar.maxValue = bee.maxStamina;
     }
 
-    public void UpdateCorbiculaLoad(int corbiculaLoad, int corbiculaCapacity)
+    public void UpdateCorbiculaPollenLoad(int corbiculaLoad, int corbiculaCapacity)
     {
-        corbiculaBar.value = corbiculaLoad;
-        corbiculaBar.maxValue = corbiculaCapacity;
+        corbiculaPollenBar.value = corbiculaLoad;
+        corbiculaPollenBar.maxValue = corbiculaCapacity;
+    }
+
+    public void UpdateCorbiculaResinLoad(int corbiculaResinLoad, int corbiculaResinCapacity)
+    {
+        corbiculaResinBar.value = corbiculaResinLoad;
+        corbiculaResinBar.maxValue = corbiculaResinCapacity;
+    }
+
+    public void UpdateCropLoad(int cropLoad, int cropCapacity)
+    {
+        cropBar.value = cropLoad;
+        cropBar.maxValue = cropCapacity;
     }
 }

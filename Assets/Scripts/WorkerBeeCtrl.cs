@@ -8,12 +8,18 @@ public class WorkerBeeCtrl : Bee
 {
     [SerializeField] private VisualEffect vfxRenderer;
 
+    [Header("UI attributes")]
     [SerializeField] private UI_Bee uiBee;
-    [SerializeField] private GameObject infoTag;
+    [SerializeField] private GameObject uiInfos;
+    [SerializeField] private GameObject uiCorbiculaPollenBar;
+    [SerializeField] private GameObject uiCorbiculaResinBar;
+    [SerializeField] private GameObject uiCropBar;
 
-    [SerializeField] private int corbiculaCapacity;
-    [SerializeField] private int corbiculaLoad;
-
+    [Header("Resources")]
+    [SerializeField] private int corbiculaPollenCapacity;
+    [SerializeField] private int corbiculaPollenLoad;
+    [SerializeField] private int corbiculaResinCapacity;
+    [SerializeField] private int corbiculaResinLoad;
     [SerializeField] private int cropCapacity;
     [SerializeField] private int cropLoad;
 
@@ -181,12 +187,18 @@ public class WorkerBeeCtrl : Bee
         if (currentAction == "CollectPollen")
         {
             Collect("Pollen");
+            uiCorbiculaPollenBar.SetActive(true);
+            uiCorbiculaResinBar.SetActive(false);
+            uiCropBar.SetActive(false);
             SpendStamina(0.1f);
         }
 
         if (currentAction == "CollectNectar")
         {
             Collect("Nectar");
+            uiCorbiculaPollenBar.SetActive(false);
+            uiCorbiculaResinBar.SetActive(false);
+            uiCropBar.SetActive(true);
             SpendStamina(0.1f);
         }
 
@@ -223,7 +235,7 @@ public class WorkerBeeCtrl : Bee
 
         RaycastHit2D hit = Physics2D.Raycast(worldMousePosition, Vector2.zero);
 
-        infoTag.SetActive(true);
+        uiInfos.SetActive(true);
 
 
         if (hit.collider != null)
@@ -332,7 +344,7 @@ public class WorkerBeeCtrl : Bee
         {
             CursorManager.somethingSelected = false;
             obj.isSelected = false;
-            infoTag.SetActive(false);
+            uiInfos.SetActive(false);
             CursorManager.instance.ChangeCursor("Default");
             //obj.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
@@ -384,15 +396,15 @@ public class WorkerBeeCtrl : Bee
 
         if (collectDelay <= 0)
         {
-            if (resource == "Pollen" && corbiculaLoad < corbiculaCapacity)
+            if (resource == "Pollen" && corbiculaPollenLoad < corbiculaPollenCapacity)
             {
                 targetPlantCtrl.TransferPollen();
                 targetPlantCtrl.isOccupied = false;
 
                 if (targetPlantCtrl.pollenLoad > 0)
                 {
-                    corbiculaLoad++;
-                    uiBee.UpdateCorbiculaLoad(corbiculaLoad, corbiculaCapacity);
+                    corbiculaPollenLoad++;
+                    uiBee.UpdateCorbiculaPollenLoad(corbiculaPollenLoad, corbiculaPollenCapacity);
                 }
 
                 if (Random.Range(0f, 1f) < 0.5f || flowersSeen.Count == 0)
@@ -419,7 +431,9 @@ public class WorkerBeeCtrl : Bee
                 if (targetPlantCtrl.nectarLoad > 0)
                 {
                     cropLoad++;
-                } 
+                    uiBee.UpdateCropLoad(cropLoad, cropCapacity);
+
+                }
 
                 if (Random.Range(0f, 1f) < 0.5f || flowersSeen.Count == 0)
                 {
@@ -442,7 +456,7 @@ public class WorkerBeeCtrl : Bee
 
 
         // Return to the nest to deliver resources and restore stamina
-        if (currentAction == "CollectPollen" && corbiculaLoad >= corbiculaCapacity || currentAction == "CollectNectar" && cropLoad >= cropCapacity || IsExhausted || flowersSeen.Count < 0 || currentStamina <= 0)
+        if (currentAction == "CollectPollen" && corbiculaPollenLoad >= corbiculaPollenCapacity || currentAction == "CollectNectar" && cropLoad >= cropCapacity || IsExhausted || flowersSeen.Count < 0 || currentStamina <= 0)
         {
             nextAction = currentAction; // Defines the action you were already performing as the next action
     
@@ -464,14 +478,15 @@ public class WorkerBeeCtrl : Bee
 
             Debug.Log("The bee " + this.name + " entered the nest");
 
-            for (int i = corbiculaLoad; i > 0; i--)
+            for (int i = corbiculaPollenLoad; i > 0; i--)
             {
                 deliveryDelay = Mathf.Max(0, deliveryDelay - 1);
 
                 if (deliveryDelay == 0)
                 {
                     nestCtrl.AddResource("Pollen");
-                    corbiculaLoad--;
+                    corbiculaPollenLoad--;
+                    uiBee.UpdateCorbiculaPollenLoad(corbiculaPollenLoad, corbiculaPollenCapacity);
 
                     deliveryDelay = 600f;
                 }
@@ -485,10 +500,12 @@ public class WorkerBeeCtrl : Bee
                 {
                     nestCtrl.AddResource("Nectar");
                     cropLoad--;
+                    uiBee.UpdateCropLoad(cropLoad, cropCapacity);
 
                     deliveryDelay = 600f;
                 }
             }
+
 
             while (currentStamina <= maxStamina)
             {
@@ -496,7 +513,7 @@ public class WorkerBeeCtrl : Bee
                 currentStamina += 500;
             }
 
-            if (corbiculaLoad <= 0 && cropLoad <= 0 && currentStamina >= maxStamina - 10)
+            if (corbiculaPollenLoad <= 0 && cropLoad <= 0 && currentStamina >= maxStamina - 10)
             {
                 sprt.enabled = true;
                 rb2D.isKinematic = true;
@@ -601,9 +618,9 @@ public class WorkerBeeCtrl : Bee
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Pollen" && corbiculaLoad <= corbiculaCapacity)
+        if (collision.gameObject.tag == "Pollen" && corbiculaPollenLoad <= corbiculaPollenCapacity)
         {
-            corbiculaLoad++;
+            corbiculaPollenLoad++;
             Destroy(collision.gameObject);
         }
     }
