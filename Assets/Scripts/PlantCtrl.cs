@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantCtrl : MonoBehaviour
 {
-    [SerializeField] private GameObject pollenSpawner;
+    [SerializeField] private GameObject pollenFX;
     [SerializeField] private int minPollenAmount;
     [SerializeField] private int maxPollenAmount;
     [SerializeField] private int pollenCapacity;
@@ -36,7 +36,7 @@ public class PlantCtrl : MonoBehaviour
 
     }
 
-    public void SpreadPollen()
+    public void TransferPollen()
     {
         float rndAmount = Random.Range(minPollenAmount, maxPollenAmount + 1);
 
@@ -44,7 +44,7 @@ public class PlantCtrl : MonoBehaviour
         {
             if (pollenLoad > 0)
             {
-                Instantiate(pollenSpawner, transform.position, Quaternion.identity);
+                Instantiate(pollenFX, transform.position, Quaternion.identity);
                 pollenLoad--;
             }
         }

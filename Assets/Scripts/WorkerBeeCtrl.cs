@@ -223,6 +223,8 @@ public class WorkerBeeCtrl : Bee
 
         RaycastHit2D hit = Physics2D.Raycast(worldMousePosition, Vector2.zero);
 
+        infoTag.SetActive(true);
+
 
         if (hit.collider != null)
         {
@@ -330,6 +332,7 @@ public class WorkerBeeCtrl : Bee
         {
             CursorManager.somethingSelected = false;
             obj.isSelected = false;
+            infoTag.SetActive(false);
             CursorManager.instance.ChangeCursor("Default");
             //obj.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
@@ -376,15 +379,21 @@ public class WorkerBeeCtrl : Bee
             targetPlantCtrl.isOccupied = true;
         }
 
-        collectDelay = collectDelay - 0.1f;
+        collectDelay -= 0.5f;
         int rndTargetFlower;
 
         if (collectDelay <= 0)
         {
             if (resource == "Pollen" && corbiculaLoad < corbiculaCapacity)
             {
-                targetPlantCtrl.SpreadPollen();
+                targetPlantCtrl.TransferPollen();
                 targetPlantCtrl.isOccupied = false;
+
+                if (targetPlantCtrl.pollenLoad > 0)
+                {
+                    corbiculaLoad++;
+                    uiBee.UpdateCorbiculaLoad(corbiculaLoad, corbiculaCapacity);
+                }
 
                 if (Random.Range(0f, 1f) < 0.5f || flowersSeen.Count == 0)
                 {
@@ -540,7 +549,7 @@ public class WorkerBeeCtrl : Bee
     void SpendStamina(float expenditure)
     {
         currentStamina = currentStamina - expenditure;
-        uiBee.UpdateStaminaBar(amount);
+        uiBee.UpdateStaminaBar(currentStamina);
     }
 
     private void SetRandomDestination()

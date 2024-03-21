@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a52a2eac151047b3f4301b777cc2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pollenSpawner: {fileID: 4363726866982981072, guid: eb80421c865af8e429669c746add83c3, type: 3}
+  pollenFX: {fileID: 4363726866982981072, guid: f6a5f3e0c1d756e45b29846e0d814a9c, type: 3}
   minPollenAmount: 0
   maxPollenAmount: 0
   pollenCapacity: 0
