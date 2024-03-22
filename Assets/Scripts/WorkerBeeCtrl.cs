@@ -11,6 +11,7 @@ public class WorkerBeeCtrl : Bee
     [Header("UI attributes")]
     [SerializeField] private UI_Bee uiBee;
     [SerializeField] private GameObject uiInfos;
+    [SerializeField] private GameObject uiCurrentAction;
     [SerializeField] private GameObject uiCorbiculaPollenBar;
     [SerializeField] private GameObject uiCorbiculaResinBar;
     [SerializeField] private GameObject uiCropBar;
@@ -76,6 +77,10 @@ public class WorkerBeeCtrl : Bee
         uiBee.DrawHearts();
         
         vfxRenderer.SetVector3("ColliderPos", transform.position);
+
+
+        uiInfos.SetActive(isSelected);
+        uiCurrentAction.SetActive(!isSelected);
 
 
         if (CursorManager.cursorMode == "Default")
@@ -235,9 +240,6 @@ public class WorkerBeeCtrl : Bee
 
         RaycastHit2D hit = Physics2D.Raycast(worldMousePosition, Vector2.zero);
 
-        uiInfos.SetActive(true);
-
-
         if (hit.collider != null)
         {
             if (hit.collider.CompareTag("Flower"))
@@ -332,6 +334,8 @@ public class WorkerBeeCtrl : Bee
                 agent.stoppingDistance = 0;
                 Move(hit.point);
             }
+
+            uiBee.UpdateCurrentActionIcon(currentAction);
 
             CursorManager.instance.ChangeCursor("Default");
             Debug.Log("Clicked on: " + hit.collider.name + " " + hit.point);

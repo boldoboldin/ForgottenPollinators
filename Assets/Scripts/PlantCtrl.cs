@@ -26,6 +26,14 @@ public class PlantCtrl : MonoBehaviour
         nectarLoad = nectarCapacity;
     }
 
+    private void Update()
+    {
+        if (pollenLoad <= 0 && nectarLoad <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     public void StartBloomPeriod()
     {
 

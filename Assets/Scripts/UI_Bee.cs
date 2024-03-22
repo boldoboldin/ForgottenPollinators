@@ -9,6 +9,8 @@ public class UI_Bee : MonoBehaviour
     [SerializeField] Bee bee;
 
     [SerializeField] private Slider staminaBar, corbiculaPollenBar, corbiculaResinBar, cropBar;
+    [SerializeField] private Image currentActionIcon;
+    [SerializeField] private Sprite pollenIcon, nectarIcon, resinIcon, forageIcon, idleIcon;
 
 
     List<HealthHeart> hearts = new List<HealthHeart>();
@@ -73,5 +75,27 @@ public class UI_Bee : MonoBehaviour
     {
         cropBar.value = cropLoad;
         cropBar.maxValue = cropCapacity;
+    }
+
+    public void UpdateCurrentActionIcon(string currentAction)
+    {
+        switch (currentAction)
+        {
+            case "CollectPollen":
+                currentActionIcon.GetComponent<Image>().sprite = pollenIcon;
+                break;
+            case "CollectNectar":
+                currentActionIcon.GetComponent<Image>().sprite = nectarIcon;
+                break;
+            case "CollectResin":
+                currentActionIcon.GetComponent<Image>().sprite = resinIcon;
+                break;
+            case "Forage":
+                currentActionIcon.GetComponent<Image>().sprite = forageIcon;
+                break;
+            case "Idle":
+                currentActionIcon.GetComponent<Image>().sprite = idleIcon;
+                break;
+        }     
     }
 }
