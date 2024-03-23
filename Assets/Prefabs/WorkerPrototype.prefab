@@ -1036,8 +1036,8 @@ MonoBehaviour:
   flowersSeen: []
   fogOfWarCtrl: {fileID: 0}
   secondaryFogOfWar: {fileID: 4530987873601452919}
-  sightDistance: 5
-  checkInterval: 5
+  sightDistance: 4.44
+  checkInterval: 1000000
 --- !u!195 &6868500542657937795
 NavMeshAgent:
   m_ObjectHideFlags: 0
