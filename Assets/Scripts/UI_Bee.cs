@@ -8,8 +8,8 @@ public class UI_Bee : MonoBehaviour
     [SerializeField] GameObject heartPrefab;
     [SerializeField] Bee bee;
 
-    [SerializeField] private Slider staminaBar, corbiculaPollenBar, corbiculaResinBar, cropBar;
-    [SerializeField] private Image currentActionIcon;
+    [SerializeField] private Slider staminaBar, corbiculaPollenBar, corbiculaResinBar, cropBar, currentActionBar;
+    [SerializeField] private Image currentActionIcon, currentActionFill;
     [SerializeField] private Sprite pollenIcon, nectarIcon, resinIcon, forageIcon, idleIcon;
 
 
@@ -65,6 +65,12 @@ public class UI_Bee : MonoBehaviour
         corbiculaPollenBar.maxValue = corbiculaCapacity;
     }
 
+    public void UpdateCurrentAction(float currentTimer, float maxTimer)
+    {
+        currentActionBar.value = currentTimer;
+        currentActionBar.maxValue = maxTimer;
+    }
+
     public void UpdateCorbiculaResinLoad(int corbiculaResinLoad, int corbiculaResinCapacity)
     {
         corbiculaResinBar.value = corbiculaResinLoad;
@@ -83,12 +89,15 @@ public class UI_Bee : MonoBehaviour
         {
             case "CollectPollen":
                 currentActionIcon.GetComponent<Image>().sprite = pollenIcon;
+                currentActionFill.GetComponent<Image>().color = new Color32(249, 194, 43, 255);
                 break;
             case "CollectNectar":
                 currentActionIcon.GetComponent<Image>().sprite = nectarIcon;
+                currentActionFill.GetComponent<Image>().color = new Color32(244, 149, 28, 255);
                 break;
             case "CollectResin":
                 currentActionIcon.GetComponent<Image>().sprite = resinIcon;
+                currentActionFill.GetComponent<Image>().color = new Color32(212, 219, 79, 255);
                 break;
             case "Forage":
                 currentActionIcon.GetComponent<Image>().sprite = forageIcon;

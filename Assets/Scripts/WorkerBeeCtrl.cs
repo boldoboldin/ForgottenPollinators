@@ -182,7 +182,14 @@ public class WorkerBeeCtrl : Bee
         }
 
 
-        // Update behaviors 
+        // Update behaviors
+        // 
+        if (currentAction == "Idle")
+        {
+            Forage();
+            SpendStamina(0.01f);
+        }
+
         if (currentAction == "Forage")
         {
             Forage();
@@ -397,6 +404,7 @@ public class WorkerBeeCtrl : Bee
 
         collectDelay -= 0.5f;
         int rndTargetFlower;
+        uiBee.UpdateCurrentAction(collectDelay, 400);
 
         if (collectDelay <= 0)
         {
@@ -455,7 +463,7 @@ public class WorkerBeeCtrl : Bee
                 Move(targetPlant.transform.position);
             }
 
-            collectDelay = Random.Range(200f, 600f);
+            collectDelay = 400f;
         }
 
 
